@@ -1,9 +1,11 @@
+const PORT = process.env.PORT || 3000;
 const express = require("express");
 const app = express();
-const PORT = 3000;
+
 const db = require("./db");
 const Person = require("./models/Person");
 const MenuItem = require("./models/MenuItem");
+require('dotenv').config();
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.json()); // req.body
@@ -19,6 +21,8 @@ const personRoutes = require("./routes/personRouts");
 
 app.use("/menu", MenuItemRouts);
 app.use("/person", personRoutes);
+
+
 
 app.listen(PORT, () => {
     console.log("Server has started on port " + PORT);
